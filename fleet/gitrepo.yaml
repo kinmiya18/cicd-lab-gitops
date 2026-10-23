@@ -1,0 +1,14 @@
+# Apply once to the cluster running Fleet (Rancher: fleet-default for downstream clusters, fleet-local for the local cluster).
+#   kubectl apply -f fleet/gitrepo.yaml
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: demo-app
+  namespace: fleet-local            # TODO: fleet-default if deploying to a downstream cluster
+spec:
+  repo: https://github.com/kinmiya18/cicd-lab-gitops
+  branch: main
+  paths:
+    - demo-app
+  pollingInterval: 15s              # Fleet polls Git; short interval so the demo rolls out quickly
+  # clientSecretName: gitops-auth   # only for a private repo

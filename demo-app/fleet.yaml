@@ -1,0 +1,5 @@
+defaultNamespace: demo
+helm:
+  releaseName: demo-app
+  valuesFiles:
+    - values.yaml

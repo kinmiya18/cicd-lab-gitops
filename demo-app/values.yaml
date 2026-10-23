@@ -1,0 +1,23 @@
+replicaCount: 1
+
+# Jenkins rewrites the "tag" line below on every successful build (commit "ci: bump demo-app image tag to <sha>").
+image:
+  repository: 127.0.0.1:5000/demo/demo-app   # local lab Harbor, reachable at 127.0.0.1:5000 from host and k3d node
+  tag: "dev"
+  pullPolicy: IfNotPresent
+
+# Created once by hand in the target namespace, see README.
+imagePullSecrets:
+  - name: harbor-regcred
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    memory: 512Mi
