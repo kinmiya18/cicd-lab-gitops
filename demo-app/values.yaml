@@ -3,7 +3,7 @@ replicaCount: 1
 # Jenkins rewrites the "tag" line below on every successful build (commit "ci: bump demo-app image tag to <sha>").
 image:
   repository: docker.io/kienphamtrung/demo-app   # public Docker Hub repository
-  tag: "cec42da"
+  tag: "1362c5d"
   pullPolicy: IfNotPresent
 
 # Empty: the Docker Hub repository is public. Add a pull secret here for a private registry.
